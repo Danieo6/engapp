@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">EngApp</string>
+
+    <string name="goto_homescreen">Wróć na ekran główny</string>
+    <string name="xp">%1$d XP</string>
+    <string name="days">%1$d dni</string>
+
+    <string name="homescreen_hello">Cześć, %1$s!</string>
+    <string name="homescreen_ready">Gotów do nauki?</string>
+    <string name="homescreen_continue">Kontynuuj naukę</string>
+    <string name="homescreen_show_stats">Pokaż moje statystyki</string>
+    <string name="homescreen_streak">Zachowałeś ciągłość nauki przez %1$d dni!</string>
+
+    <string name="helpscreen_title">Pomoc</string>
+    <string name="helpscreen_description">EngApp jest aplikacją wspierającą naukę języka angielskiego przez zgamifikowanie procesu nauczania. Wykonuj codziennie krótkie zadania, zdobywaj punkty XP, nowe poziomy i szlifuj swój angielski!</string>
+    <string name="helpscreen_created_by">
+        Aplikacja została stworzona przez\n
+        Daniela Budzińskiego\n
+        © 2022\n
+    </string>
+    <string name="helpscreen_help">
+        Jeżeli potrzebujesz pomocy, chcesz zgłosić błąd albo sugestię odwiedź moją stronę.\n\n
+        https://danieo.me/
+    </string>
+
+    <string name="statscreen_title">Twoje statystyki</string>
+    <string name="statscreen_current_xp">Obecnie posiadasz:</string>
+    <string name="statscreen_next_level_xp">Do następnego poziomu:</string>
+    <string name="statscreen_total_xp">Suma twoich punktów:</string>
+    <string name="statscreen_streak">Obecna ciągłość nauki:</string>
+    <string name="statscreen_streak_highest">Najdłuższa ciągłość:</string>
+
+    <string name="settingsscreen_title">Ustawienia</string>
+    <string name="settingsscreen_save">Zapisz i kontynuuj</string>
+    <string name="settingsscreen_reset_profile">Resetuj profil</string>
+    <string name="settingsscreen_name_field">Jak się powiniennem do Ciebie zwracać?</string>
+    <string name="settingsscreen_name_language_level">Wybierz poziom jakiego chcesz się uczyć</string>
+
+    <string name="levelbar_level">Poziom %1$d</string>
+</resources>
