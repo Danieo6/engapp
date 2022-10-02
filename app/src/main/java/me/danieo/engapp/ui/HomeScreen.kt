@@ -30,10 +30,6 @@ import me.danieo.engapp.user.UserService
 
 @Composable
 fun HomeScreen(navController: NavController, userService: UserService) {
-    if (!userService.isProfileCreated()) {
-        navController.navigate(Screen.SettingsScreen.route)
-    }
-
     val user: User = userService.getUserProfile()
 
     Column(
@@ -99,9 +95,9 @@ fun HomeScreen(navController: NavController, userService: UserService) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            LevelBar(4, 50, 100)
+            LevelBar(user.level, user.currentXp, user.nextLevelXp)
             Text(
-                text = stringResource(id = R.string.homescreen_streak, 14),
+                text = stringResource(id = R.string.homescreen_streak, user.streakDays),
                 modifier = Modifier.padding(top = 12.dp),
                 fontWeight = FontWeight.Bold,
                 color = PrimaryColor,

@@ -13,8 +13,13 @@ import me.danieo.engapp.ui.StatsScreen
 @Composable
 fun Navigation(services: Services) {
     val navController = rememberNavController()
+    var startDestination = Screen.HomeScreen.route
 
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+    if (!services.userService.isProfileCreated()) {
+        startDestination = Screen.SettingsScreen.route
+    }
+
+    NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Screen.HomeScreen.route) {
             HomeScreen(navController, services.userService)
         }
