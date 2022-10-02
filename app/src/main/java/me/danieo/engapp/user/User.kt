@@ -9,5 +9,7 @@ data class User(var name: String, var languageLevel: String) {
     var level: Int = 1
     var currentXp: Int = 0
     var nextLevelXp: Int = 50
+    var totalXp: Int = 0
     var streakDays: Int = 0
+    val streakHighest: Int = 0
 }

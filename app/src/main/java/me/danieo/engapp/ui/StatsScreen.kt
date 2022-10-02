@@ -22,16 +22,18 @@ import me.danieo.engapp.ui.components.LevelBar
 import me.danieo.engapp.ui.components.MyAppPreview
 import me.danieo.engapp.ui.components.TitleBar
 import me.danieo.engapp.ui.theme.PrimaryColor
+import me.danieo.engapp.user.User
 import me.danieo.engapp.user.UserService
 
 @Composable
 fun StatsScreen(navController: NavController, resourcesService: ResourcesService, userService: UserService) {
+    val user: User = userService.getUserProfile()
     val statistics = listOf(
-        Pair("current_xp", 50),
-        Pair("next_level_xp", 100),
-        Pair("total_xp", 467),
-        Pair("streak", 14),
-        Pair("streak_highest", 31),
+        Pair("current_xp", user.currentXp),
+        Pair("next_level_xp", user.nextLevelXp),
+        Pair("total_xp", user.totalXp),
+        Pair("streak", user.streakDays),
+        Pair("streak_highest", user.streakHighest),
     )
 
     Column(
