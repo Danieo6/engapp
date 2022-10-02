@@ -29,7 +29,7 @@ fun Navigation(services: Services) {
         }
 
         composable(route = Screen.StatsScreen.route) {
-            StatsScreen(navController, services.resourcesService)
+            StatsScreen(navController, services.resourcesService, services.userService)
         }
 
         composable(route = Screen.SettingsScreen.route) {

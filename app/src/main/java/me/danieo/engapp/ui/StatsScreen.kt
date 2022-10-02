@@ -22,9 +22,10 @@ import me.danieo.engapp.ui.components.LevelBar
 import me.danieo.engapp.ui.components.MyAppPreview
 import me.danieo.engapp.ui.components.TitleBar
 import me.danieo.engapp.ui.theme.PrimaryColor
+import me.danieo.engapp.user.UserService
 
 @Composable
-fun StatsScreen(navController: NavController, resourcesService: ResourcesService) {
+fun StatsScreen(navController: NavController, resourcesService: ResourcesService, userService: UserService) {
     val statistics = listOf(
         Pair("current_xp", 50),
         Pair("next_level_xp", 100),
@@ -82,6 +83,6 @@ fun StatsScreen(navController: NavController, resourcesService: ResourcesService
 fun StatsScreenPreview() {
     MyAppPreview {
         val services = Services(LocalContext.current)
-        StatsScreen(rememberNavController(), services.resourcesService)
+        StatsScreen(rememberNavController(), services.resourcesService, services.userService)
     }
 }
