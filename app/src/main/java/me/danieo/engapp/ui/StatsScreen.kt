@@ -42,7 +42,7 @@ fun StatsScreen(navController: NavController, resourcesService: ResourcesService
         TitleBar(textId = R.string.statscreen_title)
 
         Column {
-            LevelBar(4, 50, 100)
+            LevelBar(user.level, user.currentXp, user.nextLevelXp)
             Spacer(modifier = Modifier.size(40.dp))
             for (stat in statistics) {
                 Row(
