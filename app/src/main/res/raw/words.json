@@ -1,0 +1,31 @@
+{
+  "A1": [
+    { "en": "about", "pl": "o" },
+    { "en": "above", "pl": "powyżej, nad, ponad" },
+    { "en": "adult", "pl": "dorosły" },
+    { "en": "afternoon", "pl": "popołudnie" },
+    { "en": "banana", "pl": "banan" },
+    { "en": "beautiful", "pl": "piękny" },
+    { "en": "bedroom", "pl": "sypialnia" },
+    { "en": "beer", "pl": "piwo" },
+    { "en": "camera", "pl": "aparat fotograficzny, kamera" },
+    { "en": "cheap", "pl": "tani" },
+    { "en": "cinema", "pl": "kino" },
+    { "en": "funny", "pl": "zabawny" },
+    { "en": "fridge", "pl": "lodówka" },
+    { "en": "garden", "pl": "ogród" },
+    { "en": "here", "pl": "tutaj" },
+    { "en": "orange", "pl": "pomarańcza" },
+    { "en": "ticket", "pl": "bilet" },
+    { "en": "train", "pl": "pociąg" },
+    { "en": "wet", "pl": "mokry" },
+    { "en": "winter", "pl": "zima" }
+  ],
+  "A2": [
+    { "en": "activity", "pl": "aktywność" },
+    { "en": "air", "pl": "powietrze" },
+    { "en": "cereal", "pl": "płatki zbożowe" },
+    { "en": "cheetah", "pl": "gepard" }
+  ],
+  "B1": []
+}
