@@ -14,7 +14,7 @@ class UserRepository(val context: Context) {
         return try {
             this.context.openFileInput(USER_PROFILE_FILE).use { stream ->
                  return stream.bufferedReader().use {
-                    Json.decodeFromString<User>(it.readText())
+                     Json.decodeFromString<User>(it.readText())
                 }
             }
         } catch (e: IOException) {
