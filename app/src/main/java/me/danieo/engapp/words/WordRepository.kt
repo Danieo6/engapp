@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import me.danieo.engapp.R
 import me.danieo.engapp.words.exceptions.UnrecognizedLanguageLevelException
 
-class WordRepository(val context: Context) {
+class WordRepository(private val context: Context) {
     private val database: WordDatabase =
         this.context.resources.openRawResource(R.raw.words).bufferedReader().use {
             Json.decodeFromString(it.readText())

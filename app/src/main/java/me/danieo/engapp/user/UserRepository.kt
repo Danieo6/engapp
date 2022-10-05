@@ -9,7 +9,7 @@ import java.io.IOException
 
 const val USER_PROFILE_FILE = "user-profile.data"
 
-class UserRepository(val context: Context) {
+class UserRepository(private val context: Context) {
     fun findCurrent(): User? {
         return try {
             this.context.openFileInput(USER_PROFILE_FILE).use { stream ->
