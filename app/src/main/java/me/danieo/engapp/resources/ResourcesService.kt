@@ -3,7 +3,7 @@ package me.danieo.engapp.resources
 import android.content.Context
 import me.danieo.engapp.resources.exceptions.ResourceNotFoundException
 
-class ResourcesService(val context: Context) {
+class ResourcesService(private val context: Context) {
 
     fun getStringIdentifier(key: String?): Int {
         key?.let {

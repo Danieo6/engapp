@@ -3,7 +3,7 @@ package me.danieo.engapp.user
 import android.content.Context
 import me.danieo.engapp.user.exceptions.UserProfileNotCreatedException
 
-class UserService(val context: Context) {
+class UserService(private val context: Context) {
     private val userRepository: UserRepository = UserRepository(context)
 
     fun getUserProfile(): User {
