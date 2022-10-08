@@ -5,10 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import me.danieo.engapp.Services
-import me.danieo.engapp.ui.HelpScreen
-import me.danieo.engapp.ui.HomeScreen
-import me.danieo.engapp.ui.SettingsScreen
-import me.danieo.engapp.ui.StatsScreen
+import me.danieo.engapp.ui.*
 
 @Composable
 fun Navigation(services: Services) {
@@ -34,6 +31,14 @@ fun Navigation(services: Services) {
 
         composable(route = Screen.SettingsScreen.route) {
             SettingsScreen(navController, services.userService)
+        }
+
+        composable(route = Screen.QuizExerciseScreen.route) {
+            QuizExerciseScreen(navController)
+        }
+
+        composable(route = Screen.PairExerciseScreen.route) {
+            PairExerciseScreen(navController)
         }
     }
 }
