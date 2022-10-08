@@ -18,7 +18,7 @@ import me.danieo.engapp.ui.theme.TextColor
 
 @Composable
 fun CustomButton(
-    textResourceId: Int,
+    text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     altColors: Boolean = false,
@@ -34,7 +34,7 @@ fun CustomButton(
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
             color = if (altColors) PrimaryColor else TextColor,
-            text = stringResource(id = textResourceId),
+            text = text,
         )
     }
 }

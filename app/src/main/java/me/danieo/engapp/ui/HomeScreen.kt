@@ -78,11 +78,11 @@ fun HomeScreen(navController: NavController, userService: UserService) {
 
         Column {
             CustomButton(
-                textResourceId = R.string.homescreen_continue,
+                text = stringResource(R.string.homescreen_continue),
                 onClick = {}
             )
             CustomButton(
-                textResourceId = R.string.homescreen_show_stats,
+                text = stringResource(R.string.homescreen_show_stats),
                 modifier = Modifier.padding(top = 16.dp),
                 altColors = true,
                 onClick = {

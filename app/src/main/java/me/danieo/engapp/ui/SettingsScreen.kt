@@ -111,14 +111,14 @@ fun SettingsScreen(navController: NavController, userService: UserService) {
         }
 
         CustomButton(
-            textResourceId = R.string.settingsscreen_reset_profile,
+            text = stringResource(R.string.settingsscreen_reset_profile),
             onClick = {
                 userService.deleteUserProfile()
             },
         )
 
         CustomButton(
-            textResourceId = R.string.settingsscreen_save,
+            text = stringResource(R.string.settingsscreen_save),
             onClick = {
                 userService.saveSettings(nameField.value.text, selectedLevel.value)
                 navController.navigate(Screen.HomeScreen.route)

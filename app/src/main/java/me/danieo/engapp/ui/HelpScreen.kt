@@ -44,7 +44,7 @@ fun HelpScreen(navController: NavController) {
             )
         }
         CustomButton(
-            textResourceId = R.string.goto_homescreen,
+            text = stringResource(R.string.goto_homescreen),
             onClick = { navController.navigate(Screen.HomeScreen.route) }
         )
     }
