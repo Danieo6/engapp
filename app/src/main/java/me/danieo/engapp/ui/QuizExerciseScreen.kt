@@ -15,19 +15,24 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import me.danieo.engapp.R
 import me.danieo.engapp.Services
+import me.danieo.engapp.game.GameService
+import me.danieo.engapp.navigation.Screen
 import me.danieo.engapp.ui.components.CustomButton
+import me.danieo.engapp.ui.components.ExerciseHistory
 import me.danieo.engapp.ui.components.MyAppPreview
 
 @Composable
-fun QuizExerciseScreen(navController: NavController) {
-    val questionWord = "MY WORD"
-    val words = listOf("WORD A", "WORD B", "WORD C", "WORD D")
+fun QuizExerciseScreen(navController: NavController, gameService: GameService) {
+    val game = gameService.getCurrentGame()
+    val exercise = game.quizExercises[game.currentTask]
+    val englishToPolishMode = true
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
         Column {
+            ExerciseHistory(game)
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.quiz_exercise_screen_instruction),
@@ -36,17 +41,20 @@ fun QuizExerciseScreen(navController: NavController) {
         }
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = questionWord.uppercase(),
+            text = (if (englishToPolishMode) exercise.questionWord.en else exercise.questionWord.pl).uppercase(),
             textAlign = TextAlign.Center,
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
         )
         Column {
-            for (word in words) {
+            for (word in exercise.answers) {
                 CustomButton(
                     modifier = Modifier.padding(top = 16.dp),
-                    text = word.uppercase(),
-                    onClick = { /*TODO*/ }
+                    text = (if (englishToPolishMode) word.pl else word.en).uppercase(),
+                    onClick = {
+                        gameService.nextTask(word.en == exercise.questionWord.en)
+                        navController.navigate(Screen.QuizExerciseScreen.route)
+                    }
                 )
             }
         }
@@ -58,6 +66,6 @@ fun QuizExerciseScreen(navController: NavController) {
 fun QuizExerciseScreenPreview() {
     MyAppPreview {
         val services = Services(LocalContext.current)
-        QuizExerciseScreen(rememberNavController())
+        QuizExerciseScreen(rememberNavController(), services.gameService)
     }
 }

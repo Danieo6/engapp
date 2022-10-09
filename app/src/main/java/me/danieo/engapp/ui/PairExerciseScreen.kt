@@ -19,13 +19,14 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import me.danieo.engapp.R
 import me.danieo.engapp.Services
+import me.danieo.engapp.game.GameService
 import me.danieo.engapp.ui.components.CustomButton
 import me.danieo.engapp.ui.components.MyAppPreview
 import me.danieo.engapp.ui.theme.PrimaryColor
 import me.danieo.engapp.ui.theme.SecondaryColor
 
 @Composable
-fun PairExerciseScreen(navController: NavController) {
+fun PairExerciseScreen(navController: NavController, gameService: GameService) {
     val wordPairs = listOf(
         Pair("Orange", "Pomarańcza"),
         Pair("Fridge", "Lodówka"),
@@ -88,6 +89,6 @@ fun PairExerciseScreen(navController: NavController) {
 fun PairExerciseScreenPreview() {
     MyAppPreview {
         val services = Services(LocalContext.current)
-        PairExerciseScreen(rememberNavController())
+        PairExerciseScreen(rememberNavController(), services.gameService)
     }
 }
