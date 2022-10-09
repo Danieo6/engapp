@@ -35,7 +35,6 @@ class UserRepository(private val context: Context) {
 
     fun persist(user: User): Boolean {
         val userJson = Json.encodeToString(user)
-        println(userJson)
 
         return try {
             this.context.openFileOutput(USER_PROFILE_FILE, MODE_PRIVATE).use { stream ->

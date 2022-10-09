@@ -12,7 +12,6 @@ class UserService(private val context: Context) {
 
     fun deleteUserProfile() {
         this.userRepository.deleteCurrent()
-        println(this.userRepository.findCurrent())
     }
 
     fun isProfileCreated(): Boolean {
