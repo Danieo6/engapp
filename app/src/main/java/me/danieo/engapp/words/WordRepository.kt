@@ -12,11 +12,11 @@ class WordRepository(private val context: Context) {
             Json.decodeFromString(it.readText())
         }
 
-    fun fetchAllForLevel(level: String) {
-        when (level) {
+    fun fetchAllForLevel(level: String): List<Word> {
+        return when (level) {
             "A1" -> this.database.A1
             "A2" -> this.database.A2
-            "B1" -> this.database
+            "B1" -> this.database.B1
             else -> throw UnrecognizedLanguageLevelException()
         }
     }
