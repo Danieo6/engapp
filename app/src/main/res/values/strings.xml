@@ -36,5 +36,13 @@
     <string name="settingsscreen_name_field">Jak się powiniennem do Ciebie zwracać?</string>
     <string name="settingsscreen_name_language_level">Wybierz poziom jakiego chcesz się uczyć</string>
 
+    <string name="quiz_exercise_screen_instruction">Wybierz prawidłowe tłumaczenie dla poniższego słowa</string>
+
+    <string name="pair_exercise_screen_instruction">Połącz wyrazy z ich odpowiednim tłumaczeniem</string>
+
+    <string name="results_screen_good_job">Dobra robota!</string>
+    <string name="results_screen_earned_xp">Zyskujesz %1$d punktów XP!</string>
+    <string name="results_screen_continue">Kontynuuj naukę</string>
+
     <string name="levelbar_level">Poziom %1$d</string>
 </resources>
