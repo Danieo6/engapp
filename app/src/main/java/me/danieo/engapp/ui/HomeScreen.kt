@@ -18,6 +18,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import me.danieo.engapp.R
 import me.danieo.engapp.Services
+import me.danieo.engapp.game.Game
+import me.danieo.engapp.game.GameService
 import me.danieo.engapp.navigation.Screen
 import me.danieo.engapp.ui.components.CustomButton
 import me.danieo.engapp.ui.components.CustomIcon
@@ -28,7 +30,7 @@ import me.danieo.engapp.user.User
 import me.danieo.engapp.user.UserService
 
 @Composable
-fun HomeScreen(navController: NavController, userService: UserService) {
+fun HomeScreen(navController: NavController, userService: UserService, gameService: GameService) {
     val user: User = userService.getUserProfile()
 
     Column(
@@ -79,7 +81,10 @@ fun HomeScreen(navController: NavController, userService: UserService) {
         Column {
             CustomButton(
                 text = stringResource(R.string.homescreen_continue),
-                onClick = {}
+                onClick = {
+                    gameService.startNew()
+                    navController.navigate(Screen.QuizExerciseScreen.route)
+                }
             )
             CustomButton(
                 text = stringResource(R.string.homescreen_show_stats),
@@ -110,6 +115,6 @@ fun HomeScreen(navController: NavController, userService: UserService) {
 fun HomeScreenPreview() {
     MyAppPreview {
         val services = Services(LocalContext.current)
-        HomeScreen(rememberNavController(), services.userService)
+        HomeScreen(rememberNavController(), services.userService, services.gameService)
     }
 }

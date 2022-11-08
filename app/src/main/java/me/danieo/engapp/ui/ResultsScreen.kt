@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -16,14 +17,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import me.danieo.engapp.MyApp
 import me.danieo.engapp.R
+import me.danieo.engapp.Services
+import me.danieo.engapp.game.GameService
 import me.danieo.engapp.navigation.Screen
 import me.danieo.engapp.ui.components.CustomButton
 import me.danieo.engapp.ui.components.MyAppPreview
 import me.danieo.engapp.ui.components.TitleBar
 
 @Composable
-fun ResultsScreen(navController: NavController) {
-    val totalXp = 0
+fun ResultsScreen(navController: NavController, gameService: GameService) {
+    val currentGame = gameService.getCurrentGame()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -44,18 +47,25 @@ fun ResultsScreen(navController: NavController) {
                 textAlign = TextAlign.Center,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                text = stringResource(id = R.string.results_screen_earned_xp, totalXp),
+                text = stringResource(id = R.string.results_screen_earned_xp, currentGame.xpTotal),
             )
         }
         Column {
             CustomButton(
                 text = stringResource(id = R.string.results_screen_continue),
-                onClick = { /*TODO*/ }
+                onClick = {
+                    gameService.finishCurrentGame()
+                    gameService.startNew()
+                    navController.navigate(Screen.QuizExerciseScreen.route)
+                }
             )
             CustomButton(
                 modifier = Modifier.padding(top = 24.dp),
                 text = stringResource(id = R.string.goto_homescreen),
-                onClick = { navController.navigate(Screen.HomeScreen.route) },
+                onClick = {
+                    gameService.finishCurrentGame()
+                    navController.navigate(Screen.HomeScreen.route)
+                },
                 altColors = true,
             )
         }
@@ -66,6 +76,7 @@ fun ResultsScreen(navController: NavController) {
 @Composable
 fun ResultsScreenPreview() {
     MyAppPreview {
-        ResultsScreen(rememberNavController())
+        val services = Services(LocalContext.current)
+        ResultsScreen(rememberNavController(), services.gameService)
     }
 }

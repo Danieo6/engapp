@@ -18,7 +18,7 @@ fun Navigation(services: Services) {
 
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = Screen.HomeScreen.route) {
-            HomeScreen(navController, services.userService)
+            HomeScreen(navController, services.userService, services.gameService)
         }
 
         composable(route = Screen.HelpScreen.route) {
@@ -34,11 +34,15 @@ fun Navigation(services: Services) {
         }
 
         composable(route = Screen.QuizExerciseScreen.route) {
-            QuizExerciseScreen(navController)
+            QuizExerciseScreen(navController, services.gameService)
         }
 
-        composable(route = Screen.PairExerciseScreen.route) {
-            PairExerciseScreen(navController)
+//        composable(route = Screen.PairExerciseScreen.route) {
+//            PairExerciseScreen(navController, services.gameService)
+//        }
+
+        composable(route = Screen.ResultsScreen.route) {
+            ResultsScreen(navController, services.gameService)
         }
     }
 }

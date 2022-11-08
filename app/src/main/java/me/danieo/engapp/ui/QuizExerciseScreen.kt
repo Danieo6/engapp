@@ -20,12 +20,19 @@ import me.danieo.engapp.navigation.Screen
 import me.danieo.engapp.ui.components.CustomButton
 import me.danieo.engapp.ui.components.ExerciseHistory
 import me.danieo.engapp.ui.components.MyAppPreview
+import kotlin.random.Random
 
 @Composable
 fun QuizExerciseScreen(navController: NavController, gameService: GameService) {
     val game = gameService.getCurrentGame()
-    val exercise = game.quizExercises[game.currentTask]
-    val englishToPolishMode = true
+    var currentTask = game.currentTask
+
+    if (game.currentTask >= game.quizExercises.size) {
+        currentTask = game.quizExercises.size - 1
+    }
+
+    val exercise = game.quizExercises[currentTask]
+    val englishToPolishMode = game.exerciseDirection[currentTask]
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -52,8 +59,13 @@ fun QuizExerciseScreen(navController: NavController, gameService: GameService) {
                     modifier = Modifier.padding(top = 16.dp),
                     text = (if (englishToPolishMode) word.pl else word.en).uppercase(),
                     onClick = {
-                        gameService.nextTask(word.en == exercise.questionWord.en)
-                        navController.navigate(Screen.QuizExerciseScreen.route)
+                        val currentExerciseIndex = gameService.nextTask(word.en == exercise.questionWord.en)
+
+                        if (currentExerciseIndex < 9) {
+                            navController.navigate(Screen.QuizExerciseScreen.route)
+                        } else {
+                            navController.navigate(Screen.ResultsScreen.route)
+                        }
                     }
                 )
             }
