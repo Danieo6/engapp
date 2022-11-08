@@ -54,8 +54,16 @@ fun LevelButton(text: String, selectedLevel: String, onClick: () -> Unit) {
 
 @Composable
 fun SettingsScreen(navController: NavController, userService: UserService) {
-    val nameField = remember { mutableStateOf(TextFieldValue()) }
-    val selectedLevel = remember { mutableStateOf("A1") }
+    var username = ""
+    var level = "A1"
+
+    if (userService.isProfileCreated()) {
+        username = userService.getUserProfile().name
+        level = userService.getUserProfile().languageLevel
+    }
+
+    val nameField = remember { mutableStateOf(TextFieldValue(username)) }
+    val selectedLevel = remember { mutableStateOf(level) }
 
     Column(
         modifier = Modifier.fillMaxSize(),
