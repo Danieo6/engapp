@@ -2,8 +2,9 @@ package me.danieo.engapp.user
 
 import android.content.Context
 import me.danieo.engapp.user.exceptions.UserProfileNotCreatedException
+import me.danieo.engapp.words.WordService
 
-class UserService(private val context: Context) {
+class UserService(context: Context, private val wordService: WordService) {
     private val userRepository: UserRepository = UserRepository(context)
 
     fun getUserProfile(): User {
@@ -24,6 +25,15 @@ class UserService(private val context: Context) {
 
     fun saveSettings(name: String, languageLevel: String) {
         val user = User(name, languageLevel)
+
+        if (!this.isProfileCreated() || this.getUserProfile().languageLevel != languageLevel) {
+            user.wordsToLearn = wordService.mapWordToWordCounterList(wordService.getAllForLevel(languageLevel))
+        }
+        println(user)
+        this.userRepository.persist(user)
+    }
+
+    fun saveProfile(user: User) {
         this.userRepository.persist(user)
     }
 }
