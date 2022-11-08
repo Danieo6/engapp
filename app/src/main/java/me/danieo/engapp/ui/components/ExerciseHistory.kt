@@ -16,7 +16,7 @@ import me.danieo.engapp.ui.theme.SecondaryColor
 @Composable
 fun ExerciseHistory(game: Game) {
     val exerciseStates = game.quizExercises.map { exercise -> exercise.isCorrect }
-    val screenWidth = LocalConfiguration.current.screenWidthDp - 40
+    val screenWidth = LocalConfiguration.current.screenWidthDp - 100
     val factor = LocalConfiguration.current.densityDpi / 160
     val circleRadius = 24.dp.value
     val offset = (screenWidth - (circleRadius * exerciseStates.size)) / exerciseStates.size
